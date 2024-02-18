@@ -16,7 +16,7 @@ pipeline {
                     methodResult.each { option ->
                         options.add(option)
                     }
-                    return options
+                    return options.join('\n')
                 }
             ]
         )
