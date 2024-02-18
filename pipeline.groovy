@@ -5,7 +5,6 @@ pipeline {
         choice(
             name: 'SelectedOption',
             description: 'Select an option',
-            defaultValue: '',
             // Using a script block to dynamically generate options
             choices: [
                 // Execute a Groovy script to generate options dynamically
