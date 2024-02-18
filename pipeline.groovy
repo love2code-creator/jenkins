@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(
+        choice(
             name: 'SelectedOption',
             description: 'Select an option',
             defaultValue: '',
