@@ -14,7 +14,7 @@ def getOptions() {
 def myMethod() {
     // Your method implementation here
     // Should return a list of strings representing the options
-    return ['Option1', 'Option2', 'Option3','option4']
+    return ['Option1', 'Option2', 'Option3']
 }
 
 // Define parameters dynamically
