@@ -28,6 +28,9 @@ pipeline {
             steps {
                 // Your pipeline steps here
                 // You can use the selected option via ${params.SelectedOption}
+                script{
+                    echo "myexecution"
+                }
             }
         }
     }
