@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(
+        string(
             name: 'SelectedOption',
             description: 'Select an option',
             // Using a script block to dynamically generate options
