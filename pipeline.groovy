@@ -14,33 +14,30 @@ def getOptions() {
 def myMethod() {
     // Your method implementation here
     // Should return a list of strings representing the options
-    return ['Option1', 'Option2', 'Option3']
+    return ['Option1', 'Option2', 'Option3','option4']
 }
 
-// Define parameters dynamically using the environment directive
-pipeline {
-    agent any
-
-    environment {
-        // Define parameters dynamically based on the result of myMethod()
-        // Convert the list of options to a comma-separated string
-        OPTIONS_STRING = getOptions().join(',')
-    }
-
-    parameters {
-        // Define a choice parameter using the environment variable
+// Define parameters dynamically
+properties([
+    parameters([
+        // Define a choice parameter
         choice(
-            choices: "${env.OPTIONS_STRING}",
+            choices: getOptions(), // Call the helper function to get options
             description: 'Select an option',
             name: 'SelectedOption'
         )
-    }
+    ])
+])
+
+// Your scripted pipeline
+pipeline {
+    agent any
 
     stages {
         stage('Example') {
             steps {
                 script {
-                    echo "test again"
+                    echo "test"
                 }
             }
         }
