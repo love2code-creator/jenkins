@@ -22,7 +22,7 @@ properties([
     parameters([
         // Define a choice parameter
         choice(
-            choices: getOptions(), // Call the helper function to get options
+            choices: script { getOptions() }, // Call the helper function to get options
             description: 'Select an option',
             name: 'SelectedOption'
         )
