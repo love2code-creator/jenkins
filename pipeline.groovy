@@ -2,23 +2,14 @@ pipeline {
     agent any
 
     parameters {
-        choice(
+        string(
             name: 'SelectedOption',
             description: 'Select an option',
-            // Using a script block to dynamically generate options
-            choices: [
-                // Execute a Groovy script to generate options dynamically
-                script: {
-                    def options = []
-                    // Call your method to generate options
-                    def methodResult = myMethod()
-                    // Assuming myMethod() returns a list of strings
-                    methodResult.each { option ->
-                        options.add(option)
-                    }
-                    return options.join('\n')
-                }
-            ]
+            defaultValue: '',
+            // Use Groovy script to generate options dynamically
+            // This will create a dropdown with dynamic options
+            // based on the result of myMethod()
+            choices: getOptions()
         )
     }
 
@@ -27,12 +18,20 @@ pipeline {
             steps {
                 // Your pipeline steps here
                 // You can use the selected option via ${params.SelectedOption}
-                script{
-                    echo "myexecution"
-                }
             }
         }
     }
+}
+
+def getOptions() {
+    def options = []
+    // Call your method to generate options
+    def methodResult = myMethod()
+    // Assuming myMethod() returns a list of strings
+    methodResult.each { option ->
+        options.add(option)
+    }
+    return options.join('\n')
 }
 
 def myMethod() {
