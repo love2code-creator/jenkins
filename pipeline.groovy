@@ -1,4 +1,5 @@
 // Helper function to generate options dynamically
+def internal_parameter = ""
 def getOptions() {
     def options = []
     // Call your method to generate options
